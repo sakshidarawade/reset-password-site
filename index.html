@@ -7,13 +7,33 @@
   <h2>Opening CognifyAI...</h2>
 
   <script>
+    document.body.innerHTML +=
+      "<p><strong>Current URL:</strong><br>" +
+      window.location.href +
+      "</p>";
+
     const params = new URLSearchParams(window.location.search);
 
     const userId = params.get("userId");
     const secret = params.get("secret");
 
-    window.location.href =
+    document.body.innerHTML +=
+      "<p><strong>userId:</strong> " + userId + "</p>";
+
+    document.body.innerHTML +=
+      "<p><strong>secret:</strong> " + secret + "</p>";
+
+    const deepLink =
       `cognifyai://reset-password?userId=${userId}&secret=${secret}`;
+
+    document.body.innerHTML +=
+      "<p><strong>Deep Link:</strong><br>" +
+      deepLink +
+      "</p>";
+
+    setTimeout(() => {
+      window.location.href = deepLink;
+    }, 5000);
   </script>
 </body>
 </html>
