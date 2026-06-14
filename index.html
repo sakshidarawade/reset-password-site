@@ -2,38 +2,43 @@
 <html>
 <head>
   <title>CognifyAI Reset Password</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-  <h2>Opening CognifyAI...</h2>
+<body style="font-family: Arial; text-align: center; padding-top: 60px;">
+
+  <h2>Reset Password</h2>
+  <p>Tap the button below to open CognifyAI.</p>
+
+  <button
+    id="openApp"
+    style="
+      padding: 14px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #000;
+      color: white;
+      cursor: pointer;
+    "
+  >
+    Open CognifyAI
+  </button>
 
   <script>
-    document.body.innerHTML +=
-      "<p><strong>Current URL:</strong><br>" +
-      window.location.href +
-      "</p>";
-
     const params = new URLSearchParams(window.location.search);
 
     const userId = params.get("userId");
     const secret = params.get("secret");
 
-    document.body.innerHTML +=
-      "<p><strong>userId:</strong> " + userId + "</p>";
-
-    document.body.innerHTML +=
-      "<p><strong>secret:</strong> " + secret + "</p>";
-
     const deepLink =
       `cognifyai://reset-password?userId=${userId}&secret=${secret}`;
 
-    document.body.innerHTML +=
-      "<p><strong>Deep Link:</strong><br>" +
-      deepLink +
-      "</p>";
-
-    setTimeout(() => {
-      window.location.href = deepLink;
-    }, 5000);
+    document
+      .getElementById("openApp")
+      .addEventListener("click", () => {
+        window.location.href = deepLink;
+      });
   </script>
+
 </body>
 </html>
